@@ -1,0 +1,23 @@
+[
+    {
+        "precio": 200,
+        "id": 33,
+        "title": "Pan para Hamburgesa",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "10 piezas de pan integral con avena y zanahoria"
+    },
+    {
+        "precio": 150,
+        "id": 34,
+        "title": "Pan de Ajo",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "10 piezas, harina integral"
+    },
+    {
+        "precio": 450,
+        "id": 35,
+        "title": "Pan Briocho Trenzado",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Pieza de Pan Brioche Integral relleno de jamón, mezcla de quesos, champoñones en escabeche"
+    }
+]

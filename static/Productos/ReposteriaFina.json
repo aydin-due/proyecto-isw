@@ -1,0 +1,23 @@
+[
+    {
+        "precio": 230,
+        "id": 30,
+        "title": "Bombon de Chocolate Relleno de Mazapan",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Cajilla con 10 piezas"
+    },
+    {
+        "precio": 650,
+        "id": 31,
+        "title": "Flan Napolitano con Frutas",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Requísimo flan con frutas"
+    },
+    {
+        "precio": 420,
+        "id": 32,
+        "title": "Sticky Buns",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Charola con 9 porciones de pan con miel y nuez pecana"
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "precio": 130,
+        "id": 19,
+        "title": "Tacos de Canasta",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Orden de 10 tacos, papa con carne"
+    },
+    {
+        "precio": 120,
+        "id": 20,
+        "title": "Cahuamanta",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Litro acompañado de salsa, limones y repollo"
+    },
+    {
+        "precio": 110,
+        "id": 21,
+        "title": "Fajitas",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Orden individual acompañado de arroz y frijoles"
+    }
+]

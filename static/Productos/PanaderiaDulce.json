@@ -1,0 +1,23 @@
+[
+    {
+        "precio": 140,
+        "id": 10,
+        "title": "Pan de Leche",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "18 piezas"
+    },
+    {
+        "precio": 160,
+        "id": 11,
+        "title": "Elotitos",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "18 piezas"
+    },
+    {
+        "precio": 115,
+        "id": 12,
+        "title": "Pan de Café Coreano",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "25 piezas"
+    }
+]

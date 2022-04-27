@@ -1,0 +1,208 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arioli-Sabor de Herencia</title>
+    <!-- BOOTSTRAP 4 CDN -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script src="js/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/principal.css') }}">
+</head>
+
+<body>
+    <!-- BARRA LOGO -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning bd-example">
+        <div class="container-fluid">
+            <form action="/" method="GET">
+                <input type="image" src="static/images/logorb.png" class="rounded float-start" alt="IMAGE">
+            </form>
+            <!-- BARRA BUSCAR -->
+            <div class="nav-item col-6" id="barramenu">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-dark" type="submit">Buscar</button>
+                </form>
+            </div>
+
+            <!-- INICIAR SESION -->
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item">
+                    <input type="image" src="static/images/user.png" class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"></button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!--Verificamos si ya iniciaron sesion-->
+                                {% if usuario%}
+                                <!--ENTRAR A LA INFORMACION DEL USUARIO-->
+                                {% else%}
+                                <form action="" method="post">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesión</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <!-- Usuario -->
+                                                <label class="form-label">Usuario</label><br>
+                                                <input type="text" id="text" class="form-control" name="usuario" placeholder="Usuario">
+                                            </div>
+                                            <div class="mb-3">
+                                                <!-- Contraseña -->
+                                                <label class="form-label">Contraseña</label><br>
+                                                <input type="password" id="password" class="form-control" name="password" placeholder="Contraseña"><br>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-light " href="/registro" role="button">Crear una Cuenta</a>
+                                        <button type="button" class="btn btn-danger">Acceder</button>
+                                    </div>
+                                </form>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- CARRITO -->
+            <form action="/cart" method="GET">
+                <input type="image" src="static/images/carrito.png" class="rounded float-start" alt="IMAGE">
+            </form>
+        </div>
+    </nav>
+
+    <!-- BARRA COMIDAS -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <div class="container-fluid justify-content-start">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/mexicana">Comida Mexicana</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/internacional">Comida Internacional</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/gourmet">Gourmet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/especial">Especialidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/nosotros">Nosotros</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- GALERIA FOTOS  -->
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="static/images/image.jpeg" class="d-block w-70" alt="promo4">
+            </div>
+            <div class="carousel-item">
+                <img src="static/images/banner.png" class="d-block w-70" alt="promo2">
+            </div>
+            <div class="carousel-item">
+                <img src="static/images/image3.jpeg" class="d-block w-70" alt="promo3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- FAVORITOS -->
+    <div class="">
+        <div class="text-md-center">
+            <h4><br></h4>
+            <section class="container content-section">
+                <h3 class="section-header">LOS FAVORITOS DE TODOS</h3>
+                <div class="shop-items">
+                    <div class="shop-item">
+                        <span class="shop-item-title">CHORIZO DE POLLO</span>
+                        <img class="shop-item-image" src="static/images/chorizo.png">
+                        <div class="shop-item-details">
+                            <span class="shop-item-price">$150</span>
+                            <button class="btn btn-warning shop-item-button" type="button">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                    <div class="shop-item">
+                        <span class="shop-item-title">TACOS DE CANASTA</span>
+                        <img class="shop-item-image" src="static/images/tacoscanasta.png">
+                        <div class="shop-item-details">
+                            <span class="shop-item-price">$130</span>
+                            <button class="btn btn-warning shop-item-button" type="button">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                    <div class="shop-item">
+                        <span class="shop-item-title">PAN DE CAFÉ COREANO</span>
+                        <img class="shop-item-image" src="static/images/pancoreano.png">
+                        <div class="shop-item-details">
+                            <span class="shop-item-price">$115</span>
+                            <button class="btn btn-warning shop-item-button" type="button">Agregar al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <br><br>
+    <!-- FOOTERS -->
+    <footer class="page-footer font-small unique-color-dark">
+        <div style="background-color: #ffc107;">
+            <div class="container">
+                <div class="row py-1 d-flex align-items-center">
+                    <div class="container text-center text-md-left mt-5">
+                        <div class="row mt-3">
+                            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                                <h6 class="text-uppercase font-weight-bold mb-0 h5">Arioli</h6>
+                                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                                <div class="">
+                                    <img src="static/images/logorb.png" class="rounded float-start" alt="IMAGE">
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                                <h6 class="text-uppercase font-weight-bold mb-0 h5">Redes Sociales</h6>
+                                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                                <p><a href="#" class="link-dark">Facebook</a></p>
+                                <p><a href="#" class="link-dark">Instagram</a></p>
+                                <p><a href="#" class="link-dark">Twitter</a></p>
+                            </div>
+                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                                <h6 class="text-uppercase font-weight-bold mb-0 h5">Contacto</h6>
+                                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                                <p><i class="fas fa-home mr-3"></i> Hermosillo, Sonora, México</p>
+                                <p><i class="fas fa-envelope mr-3"></i> norahp.arias@gmail.com</p>
+                                <p><a href="#" class="link-dark">Whatsapp</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2021 Copyright
+            </div>
+        </div>
+    </footer>
+</body>
+
+</HTML>

@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arioli - Iniciar Sesión</title>
+    <!-- BOOTSTRAP 4 CDN -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <script src="js/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inicio.css') }}">
+</head>
+
+<body>
+    <!-- BARRA LOGO -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning bd-example">
+        <div class="container-fluid">
+            <form action="/" method="GET">
+                <input type="image" src="static/images/logorb.png" class="rounded float-start" alt="IMAGE">
+            </form>
+    </nav>
+
+    <!-- BARRA COMIDAS -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <div class="container-fluid justify-content-start">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/mexicana">Comida Mexicana</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/internacional">Comida Internacional</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/gourmet">Gourmet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/especial">Especialidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/nosotros">Nosotros</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- INICIAR SESION -->
+
+    <section class="form-login">
+        <form action="" method="post">
+            <h3 class="section-header text-center">INICIAR SESION</h3><br>
+            <input class="controls" type="text" name="email" value="{{ request.form.email }}" placeholder="Correo">
+            <input class="controls" type="password" name="password" value="{{request.form.password }}" placeholder="Contraseña">
+            <input class="buttons" type="submit" name="" value="Ingresar">
+        </form>
+        <p><a href="#">¿Olvidastes tu Contraseña?</a></p>
+        <p><a href="/registro">Aún no tengo una cuenta</a></p>
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}</p>
+      {% endif %}
+    </section>
+
+    <br><br>
+    <!-- FOOTERS -->
+    <footer class="page-footer font-small unique-color-dark">
+        <div style="background-color: #ffc107;">
+            <div class="container">
+                <div class="row py-1 d-flex align-items-center">
+                    <div class="container text-center text-md-left mt-5">
+                        <div class="row mt-3">
+                            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                                <h6 class="text-uppercase font-weight-bold mb-0 h5">Arioli</h6>
+                                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                                <div class="">
+                                    <img src="static/images/logorb.png" class="rounded float-start" alt="IMAGE">
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                                <h6 class="text-uppercase font-weight-bold mb-0 h5">Redes Sociales</h6>
+                                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                                <p><a href="#" class="link-dark">Facebook</a></p>
+                                <p><a href="#" class="link-dark">Instagram</a></p>
+                                <p><a href="#" class="link-dark">Twitter</a></p>
+                            </div>
+                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                                <h6 class="text-uppercase font-weight-bold mb-0 h5">Contacto</h6>
+                                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                                <p><i class="fas fa-home mr-3"></i> Hermosillo, Sonora, México</p>
+                                <p><i class="fas fa-envelope mr-3"></i> norahp.arias@gmail.com</p>
+                                <p><a href="#" class="link-dark">Whatsapp</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2021 Copyright
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

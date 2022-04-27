@@ -1,0 +1,23 @@
+[
+    {
+        "precio": 250,
+        "id": 45,
+        "title": "Salmon en Salsa de Frutos",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Salmón con salsa de frutos, arroz salvaje con granos ancestrales"
+    },
+    {
+        "precio": 110,
+        "id": 46,
+        "title": "Brochetas de Pollo",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Brochetas de pollo con vegetales acompañadas de arroz blanco"
+    },
+    {
+        "precio": 110,
+        "id": 47,
+        "title": "Albondigas de Pollo al Guajillo",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "La orden individual de albóndigas de pechuga de pollo con vegetales y garbanzos"
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "precio": 150,
+        "id": 42,
+        "title": "Hamburgesa de Pollo",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Hamburguesa de pollo acompañada de papa asada"
+    },
+    {
+        "precio": 350,
+        "id": 43,
+        "title": "T-Bone Steak a la Florentina",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Acompañado de puré de papa"
+    },
+    {
+        "precio": 120,
+        "id": 44,
+        "title": "Pechugas Adobadas",
+        "thumbnai": "Inserte Imagen",
+        "descripcion": "Platillo individual con una pechuga de pollo con arroz entomatado, frijoles y tortillas de maiz"
+    }
+]

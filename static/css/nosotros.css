@@ -1,0 +1,19 @@
+.outer {
+    padding: 12px
+}
+
+.wrap {
+    margin: 0 auto;
+}
+
+.sub {
+    padding: 12px;
+    width: 10%;
+    height: 50px;
+    display: table-cell;
+    border-right: solid #000000 1px;
+}
+
+.sub:last-child {
+    border: 0px
+}
