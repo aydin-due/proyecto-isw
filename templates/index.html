@@ -33,43 +33,22 @@
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-
-                                <!--Verificamos si ya iniciaron sesion-->
-                                {% if usuario%}
-                                <!--ENTRAR A LA INFORMACION DEL USUARIO-->
-                                {% else%}
-                                <form action="" method="post">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesión</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="mb-3">
-                                                <!-- Usuario -->
-                                                <label class="form-label">Usuario</label><br>
-                                                <input type="text" id="text" class="form-control" name="usuario" placeholder="Usuario">
-                                            </div>
-                                            <div class="mb-3">
-                                                <!-- Contraseña -->
-                                                <label class="form-label">Contraseña</label><br>
-                                                <input type="password" id="password" class="form-control" name="password" placeholder="Contraseña"><br>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a class="btn btn-light " href="/registro" role="button">Crear una Cuenta</a>
-                                        <button type="button" class="btn btn-danger">Acceder</button>
-                                    </div>
-                                </form>
-                                {% endif %}
-
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Cuenta</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {% if username %}
+                                    <label class="form-label">Bienvenido, {{ username }}</label><br>
+                                    <a class="btn btn-light " href="/logout" role="button">Cerrar Sesión</a> {% else %}
+                                    <a class="btn btn-light " href="/registro" role="button">Crear una Cuenta</a>
+                                    <a class="btn btn-light " href="/login" role="button">Iniciar Sesión</a> {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </li>
             </ul>
-
             <!-- CARRITO -->
             <form action="/cart" method="GET">
                 <input type="image" src="static/images/carrito.png" class="rounded float-start" alt="IMAGE">
@@ -100,6 +79,9 @@
                     <li class="nav-item">
                         <a class="mb-0 h5 nav-link active" aria-current="page" href="/nosotros">Nosotros</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="mb-0 h5 nav-link active" aria-current="page" href="/products">Ver todo</a>
+                    </li>
 
                 </ul>
             </div>
@@ -110,13 +92,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="static/images/image.jpeg" class="d-block w-70" alt="promo4">
+                <img src="static/images/image.jpeg" class="d-block w-5" alt="promo4">
             </div>
             <div class="carousel-item">
-                <img src="static/images/banner.png" class="d-block w-70" alt="promo2">
+                <img src="static/images/banner.png" class="d-block w-5" alt="promo2">
             </div>
             <div class="carousel-item">
-                <img src="static/images/image3.jpeg" class="d-block w-70" alt="promo3">
+                <img src="static/images/image3.jpeg" class="d-block w-5" alt="promo3">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
