@@ -104,13 +104,14 @@
                                 <img class="shop-item-image" src="{{  v['thumbnail'] }}">
                                 <div class="shop-item-details">
                                     <span class="shop-item-price">${{  v['precio'] }}</span>
-                                    <button class="btn btn-warning shop-item-button" type="submit" value="{{ k }}" name="boton">Eliminar del Carrito</button>
+                                    <span class="shop-item-price"><strong>Cantidad:</strong> {{  v['cantidad'] }}</span>
                                 </div>
+                                <button class="btn btn-warning shop-item-button" type="submit" value="{{ k }}" name="boton">Eliminar del Carrito</button>
                             </div>
                             {%endfor %}
                         </div>
                         {% if pedido %}
-                        <button class="btn btn-warning shop-item-button" type="submit" value="{{ k }}" name="boton">Realizar pedido</button>
+                        <button class="btn btn-warning shop-item-button" type="submit" value="pedido" name="boton">Realizar pedido</button>
                         {% endif %}
                     {% endif %}
                 </form>

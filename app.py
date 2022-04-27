@@ -55,18 +55,19 @@ def logout():
 def cart():
     if 'username' in session:
         user = session['username']
-        email = session['email'] 
+        email = session['email']
         if request.method == 'POST':
-            producto = request.form['boton']
-            dict_usuarios[email]['carrito'].remove(producto)
-            with open('static/data/usuarios.json', 'w') as fp:
-                json.dump(dict_usuarios, fp)
-            carrito = {k:v for (k,v) in dict_productos.items() if k in dict_usuarios[email]['carrito']}
-            pedido=(len(carrito.keys()) > 0)
-            return render_template('cart.html',username=user,productos=carrito, error="Producto eliminado del carrito.", pedido=pedido)
+            if request.form['boton'] == 'pedido':
+                pass
+            else:
+                producto = request.form['boton']
+                dict_usuarios[email]['carrito'].remove(producto)
+                with open('static/data/usuarios.json', 'w') as fp:
+                    json.dump(dict_usuarios, fp)
+                carrito, pedido = consultarCarrito(email)
+                return render_template('cart.html',username=user,productos=carrito, error="Producto eliminado del carrito.", pedido=pedido)
         else:
-            carrito = {k:v for (k,v) in dict_productos.items() if k in dict_usuarios[email]['carrito']}
-            pedido=(len(carrito.keys()) > 0)
+            carrito, pedido = consultarCarrito(email)
             if pedido:
                 return render_template('cart.html',username=user,productos=carrito, pedido=pedido)
             return render_template('cart.html',username=user,error="Tu carrito está vacío",productos=carrito,pedido=pedido)
@@ -112,6 +113,15 @@ def registro():
         session['email'] = email
         return redirect('/')
     return render_template('registro.html')
+
+def consultarCarrito(email):
+    carrito = {}
+    for k,v in dict_productos.items():
+        if k in dict_usuarios[email]['carrito']:
+            carrito[k]=v
+            carrito[k]['cantidad']=dict_usuarios[email]['carrito'].count(k)
+    pedido=(len(carrito.keys()) > 0)
+    return carrito, pedido
 
 if __name__ == '__main__':
     app.run(debug=True)
