@@ -65,15 +65,15 @@ def cart():
                 with open('static/data/usuarios.json', 'w') as fp:
                     json.dump(dict_usuarios, fp)
                 carrito, pedido = consultarCarrito(email)
-                return render_template('cart.html',username=user,productos=carrito, error="Producto eliminado del carrito.", pedido=pedido)
+                return render_template('cart.html',username=user,carrito=carrito, error="Producto eliminado del carrito.", pedido=pedido)
         else:
             carrito, pedido = consultarCarrito(email)
             if pedido:
-                return render_template('cart.html',username=user,productos=carrito, pedido=pedido)
-            return render_template('cart.html',username=user,error="Tu carrito está vacío",productos=carrito,pedido=pedido)
+                return render_template('cart.html',username=user,carrito=carrito, pedido=pedido)
+            return render_template('cart.html',username=user,error="Tu carrito está vacío",carrito=carrito,pedido=pedido)
             
     else:
-        return render_template('cart.html', productos=None, error="Inicia sesión primero.")
+        return render_template('cart.html', carrito=None, error="Inicia sesión primero.")
 
 
 @app.route('/login',methods=['GET','POST'])
@@ -115,11 +115,12 @@ def registro():
     return render_template('registro.html')
 
 def consultarCarrito(email):
-    carrito = {}
+    carrito={'productos':{}, 'total':0}
     for k,v in dict_productos.items():
         if k in dict_usuarios[email]['carrito']:
-            carrito[k]=v
-            carrito[k]['cantidad']=dict_usuarios[email]['carrito'].count(k)
+            carrito['productos'][k]=v
+            carrito['productos'][k]['cantidad']=dict_usuarios[email]['carrito'].count(k)
+            carrito['total']+=dict_productos[k]['precio']*carrito['productos'][k]['cantidad']
     pedido=(len(carrito.keys()) > 0)
     return carrito, pedido
 
