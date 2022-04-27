@@ -97,18 +97,21 @@
                         <p class="error"> {{ error }}</p>
                     {% endif %}
                     {% if username %}
-                    <div class="shop-items">
-                        {%for k,v in productos.items() %}
-                        <div class="shop-item">
-                            <span class="shop-item-title">{{  v['title'] }}</span>
-                            <img class="shop-item-image" src="{{  v['thumbnail'] }}">
-                            <div class="shop-item-details">
-                                <span class="shop-item-price">${{  v['precio'] }}</span>
-                                <button class="btn btn-warning shop-item-button" type="submit" value="{{ k }}" name="boton">Eliminar del Carrito</button>
+                        <div class="shop-items">
+                            {%for k,v in productos.items() %}
+                            <div class="shop-item">
+                                <span class="shop-item-title">{{  v['title'] }}</span>
+                                <img class="shop-item-image" src="{{  v['thumbnail'] }}">
+                                <div class="shop-item-details">
+                                    <span class="shop-item-price">${{  v['precio'] }}</span>
+                                    <button class="btn btn-warning shop-item-button" type="submit" value="{{ k }}" name="boton">Eliminar del Carrito</button>
+                                </div>
                             </div>
+                            {%endfor %}
                         </div>
-                        {%endfor %}
-                    </div>
+                        {% if pedido %}
+                        <button class="btn btn-warning shop-item-button" type="submit" value="{{ k }}" name="boton">Realizar pedido</button>
+                        {% endif %}
                     {% endif %}
                 </form>
             </section>

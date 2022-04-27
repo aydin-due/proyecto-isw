@@ -62,10 +62,15 @@ def cart():
             with open('static/data/usuarios.json', 'w') as fp:
                 json.dump(dict_usuarios, fp)
             carrito = {k:v for (k,v) in dict_productos.items() if k in dict_usuarios[email]['carrito']}
-            return render_template('cart.html',username=user,productos=carrito, error="Producto eliminado del carrito.")
+            pedido=(len(carrito.keys()) > 0)
+            return render_template('cart.html',username=user,productos=carrito, error="Producto eliminado del carrito.", pedido=pedido)
         else:
             carrito = {k:v for (k,v) in dict_productos.items() if k in dict_usuarios[email]['carrito']}
-            return render_template('cart.html',username=user,productos=carrito)
+            pedido=(len(carrito.keys()) > 0)
+            if pedido:
+                return render_template('cart.html',username=user,productos=carrito, pedido=pedido)
+            return render_template('cart.html',username=user,error="Tu carrito está vacío",productos=carrito,pedido=pedido)
+            
     else:
         return render_template('cart.html', productos=None, error="Inicia sesión primero.")
 
