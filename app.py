@@ -3,6 +3,7 @@ from werkzeug.utils import redirect
 import json
 import os
 import secrets
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
@@ -58,7 +59,13 @@ def cart():
         email = session['email']
         if request.method == 'POST':
             if request.form['boton'] == 'pedido':
-                pass
+                fecha = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+                dict_usuarios[email]['pedidos'][len(dict_usuarios[email]['pedidos'])]={'productos':dict_usuarios[email]['carrito'],'fecha':fecha}
+                dict_usuarios[email]['carrito']=[]
+                with open('static/data/usuarios.json', 'w') as fp:
+                    json.dump(dict_usuarios, fp)
+                carrito, pedido = consultarCarrito(email)
+                return render_template('cart.html',username=user,carrito=carrito, error="Pedido realizado exitosamente.", pedido=pedido)
             else:
                 producto = request.form['boton']
                 dict_usuarios[email]['carrito'].remove(producto)
@@ -105,7 +112,7 @@ def registro():
         dict_usuarios[email]['surname'] = surname
         dict_usuarios[email]['password'] = password
         dict_usuarios[email]['carrito'] = []
-        dict_usuarios[email]['pedido'] = None
+        dict_usuarios[email]['pedidos'] = {}
         dict_usuarios[email]['admin'] = False
         with open('static/data/usuarios.json', 'w') as fp:
                 json.dump(dict_usuarios, fp)
@@ -121,7 +128,7 @@ def consultarCarrito(email):
             carrito['productos'][k]=v
             carrito['productos'][k]['cantidad']=dict_usuarios[email]['carrito'].count(k)
             carrito['total']+=dict_productos[k]['precio']*carrito['productos'][k]['cantidad']
-    pedido=(len(carrito.keys()) > 0)
+    pedido=(len(carrito['productos'].keys()) > 0)
     return carrito, pedido
 
 if __name__ == '__main__':
