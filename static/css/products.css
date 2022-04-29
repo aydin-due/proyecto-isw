@@ -35,4 +35,10 @@
 
 .shop-item-button {
     color: rgb(0, 0, 0);
+    background-color: rgb(235, 152, 8);
+}
+
+#floatingSelect {
+    margin: auto;
+    text-align: center;
 }

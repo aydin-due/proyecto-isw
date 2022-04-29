@@ -16,18 +16,22 @@ with open('static/data/usuarios.json') as f:
 with open('static/data/productos.json') as f:
     dict_productos = json.load(f)
 
-@app.route('/',methods=['GET','POST'])
+@app.route("/")
 def index():
+    return render_template('index.html')
+
+@app.route("/cuenta", methods=['GET','POST'])
+def cuenta():
     if 'username' in session:
         user = session['username']
-        return render_template('index.html',username=user)
-    return render_template('index.html')
+        return render_template('cuenta.html',username=user)
+    return render_template('cuenta.html')
 
 @app.route('/products',methods=['GET','POST'])
 def productos():
     if 'username' in session:
         user = session['username']
-        email = session['email'] 
+        email = session['email']
     if request.method == 'POST':
         if request.form['boton'] == 'Buscar':
             category = request.form['category']
@@ -46,7 +50,7 @@ def productos():
             return render_template('products.html',username=user,productos=dict_productos, categories=categorias)
         return render_template('products.html', productos=dict_productos, categories=categorias)
 
-@app.route('/logout') 
+@app.route('/logout')
 def logout():
     if 'username' in session:
         session.pop('username',None)
@@ -78,7 +82,7 @@ def cart():
             if pedido:
                 return render_template('cart.html',username=user,carrito=carrito, pedido=pedido)
             return render_template('cart.html',username=user,error="Tu carrito está vacío",carrito=carrito,pedido=pedido)
-            
+
     else:
         return render_template('cart.html', carrito=None, error="Inicia sesión primero.")
 

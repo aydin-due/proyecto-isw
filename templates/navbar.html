@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Arioli - Sabor de Herencia</title>
+        <!-- BOOTSTRAP 4 CDN -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <script src="static/js/admin.js"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+        <!-- CUSTOM CSS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+        <link rel="shortcut icon" href="#" />
+    </head>
+
+  <body>
+        <nav class="navbar navbar-expand-lg" style="background-color: #FA936D;">
+                <div class="container-fluid" >
+                  <a class="navbar-brand" href="/">
+                    <img src="static/images/logorb.png" alt="" width="250" height="100" class="d-inline-block align-text-top">
+                  </a>
+                  <ul class="navbar-nav" id="links">
+                    <li class="nav-item">
+                      <a class="nav-link" href="/cuenta">
+                        <img src="static/images/cuenta.png" alt="" width="45" height="45" class="d-inline-block align-text-right">
+                        Cuenta</a>
+                    </li>
+                  </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/products">
+                        <img src="static/images/all.png" alt="" width="45" height="45" class="d-inline-block align-text-right">
+                        Ver Todo</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/cart">
+                        <img src="static/images/carrito.png" alt="" width="45" height="45" class="d-inline-block align-text-right">
+                        Carrito</a>
+                    </li>
+                  </ul>
+                </div>
+        </nav>
+  </body>
+</html>
+

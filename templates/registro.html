@@ -1,149 +1,81 @@
-<html>
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
 
-<head>
-  <meta charset="UTF-8">
-  <title>Crea tu Cuenta</title>
-  <!-- BOOTSTRAP 4 CDN -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-  <script src="js/jquery.min.js"></script>
-  <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
-  <!-- CUSTOM CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='static/css/registro.css') }}">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login - Arioli</title>
+        <!-- BOOTSTRAP 4 CDN -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <script src="static/js/admin.js"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+        <!-- CUSTOM CSS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/registro.css') }}">
+        <link rel="shortcut icon" href="#" />
+    </head>
 
-<body>
-  <!-- BARRA MENU -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-warning bd-example">
-    <div class="container-fluid">
-      <form action="/" method="GET">
-        <input type="image" src="static/images/logorb.png" class="rounded float-start" alt="IMAGE">
-      </form>
-      <div class="navbar-collapse" id="barramenu">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Comida Mexicana</a>
-          </li>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Comidas
-                Internacionales</a>
-            </li>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Gourmet</a>
-              </li>
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Especialidades</a>
-                </li>
-              </ul>
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/nosotros">Nosotros</a>
-                </li>
-              </ul>
-            </ul>
-          </ul>
-        </ul>
+   <body>
+        {% include 'navbar.html' %}
+
+      <br></br>
+      <div class="wrapper">
+         <div class="title-text">
+            <div class="title signup">
+               Registrarse
+            </div>
+         </div>
+         <div class="form-container">
+            <div class="slide-controls">
+               <input type="radio" name="slide" id="login" checked>
+               <div class="slider-tab"></div>
+            </div>
+            <div class="form-inner">
+               <form action="" method="post">
+                  <div class="field">
+                     <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" name="name" value="{{ request.form.name }}" required>
+                  </div>
+                  <div class="field">
+                        <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido" name="surname" value="{{ request.form.surname }}" required>
+                     </div>
+                     <div class="field">
+                        <input type="text" id="email" class="form-control" name="email" placeholder="Correo" value="{{ request.form.email }}" required>
+                     </div>
+                  <div class="field">
+                     <input type="password" id="password" class="form-control" placeholder="Contraseña" name="password" value="{{ request.form.password }}" required>
+                  </div>
+                  <div class="pass-link">
+                     <a href="/login">¿Ya Tienes una Cuenta?</a>
+                  </div>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" id="register" value="Registrarme">
+                  </div>
+               </form>
+            </div>
+            {% if error %}
+            <p class="error"><strong>Error:</strong> {{ error }}</p>
+        {% endif %}
+         </div>
       </div>
-    </div>
-  </nav>
-
-  <!-- REGISTRO -->
-  <br>
-  <div class="container text-center">
-    <div class="jumbotron">
-      <h1 class="display-4">Crea tu Cuenta</h1>
-      <div class="">
-        <div class="text-md-center"></div>
-        <div class="container text-lg-center">
-          <div class="row">
-            <div class="col-sm">
-              <div class="" style="width: 5rem;">
-                <div class="card-body">
-                  <p class="card-text"></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="card" style="width: 45rem;">
-                <div class="card-body">
-                  <form action="" method="post">
-                    <div class="row">
-                      <!-- Nombre y Apellidos Usuario -->
-                      <div class="col">
-                        <label class="form-label">Nombre</label><br>
-                        <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre" name="name" value="{{ request.form.name }}">
-                      </div>
-                      <div class="col">
-                        <label class="form-label">Apellido</label><br>
-                        <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido" name="surname" value="{{ request.form.surname }}">
-                      </div>
-                    </div>
-                    <!-- Correo -->
-                    <p></p>
-                    <label class="form-label">Correo</label><br>
-                    <input type="text" id="email" class="form-control" name="email" placeholder="Correo" value="{{ request.form.email }}">
-                    <!-- Contraseña -->
-                    <p></p>
-                    <label class="form-label">Contraseña</label><br>
-                    <input type="password" id="password" class="form-control" placeholder="Contraseña" name="password" value="{{ request.form.password }}"><br>
-                    <!-- Boton Sign up -->
-                    <input type="submit" id="register" class="btn btn-danger" value="Crear Cuenta">
-                  </form>
-                  {% if error %}
-                      <p class="error"><strong>Error:</strong> {{ error }}</p>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="" style="width: 5rem;">
-                <div class="card-body">
-                  <p class="card-text"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BARRA ABAJO -->
-  <br>
-  <div>
-    <footer class="text-center text-lg-start bg-warning text-active">
-      <section class="">
-        <br>
-        <div class="container text-center text-md-start mt-5">
-          <div class="row mt-3">
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-              <h6 class="text-uppercase fw-bold mb-4">Redes Sociales</h6>
-              <p><a href="#!" class="text-reset">Facebook</a></p>
-              <p><a href="#!" class="text-reset">Instagram</a></p>
-              <p><a href="#!" class="text-reset">Whatsapp</a></p>
-              <p><a href="#!" class="text-reset">Twitter</a></p>
-            </div>
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-              <img src="static/images/logorb.png" class="rounded float-start" alt="IMAGE">
-            </div>
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-              <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
-              <p><i class="fas fa-home me-3"></i> Hermosillo, Sonora, México</p>
-              <p><i class="fas fa-envelope me-3"></i>norahp.arias@gmail.com</p>
-              <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-              <h4> </h4><img src="static/images/tarjetasrb.png" class="rounded float-start" alt="IMAGE">
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2021 Copyright
-      </div>
-    </footer>
-  </div>
-
-</body>
-
+      <script>
+         const loginText = document.querySelector(".title-text .login");
+         const loginForm = document.querySelector("form.login");
+         const loginBtn = document.querySelector("label.login");
+         const signupBtn = document.querySelector("label.signup");
+         const signupLink = document.querySelector("form .signup-link a");
+         signupBtn.onclick = (()=>{
+           loginForm.style.marginLeft = "-50%";
+           loginText.style.marginLeft = "-50%";
+         });
+         loginBtn.onclick = (()=>{
+           loginForm.style.marginLeft = "0%";
+           loginText.style.marginLeft = "0%";
+         });
+         signupLink.onclick = (()=>{
+           signupBtn.click();
+           return false;
+         });
+      </script>
+   </body>
 </html>

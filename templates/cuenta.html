@@ -11,7 +11,8 @@
         <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
         <!-- CUSTOM CSS -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/cuenta.css') }}">
+        <!-- <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css" rel="stylesheet" /> -->
         <link rel="shortcut icon" href="#" />
     </head>
 
@@ -20,21 +21,18 @@
         {% block content %}
         <br></br>
         <div class="jumbotron text-center col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center">
-          <h1 class="display-4">Busqueda</h1>
-          <hr class="my-4">
-          {% if username %}
-          <p class="lead">
-            <label class="form-label">Bienvenido, {{ username }} </label><br>
-            {% endif %}
-            <p class="lead">¿Desea Realizar una Busqueda de un Producto en Especial?</p>
-          <div class="text-center col-lg-6 offset-3 float-md-center" id="barramenu">
-              <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                  <button class="btn btn-dark" type="submit">Buscar</button>
-              </form>
-          </div>
-          </p>
-   </div>
+                <h1 class="display-4">Cuenta</h1>
+                <hr class="my-4">
+                {% if username %}
+                <p class="lead">
+                  <label class="form-label">Bienvenido, {{ username }} </label><br>
+                  <a class="btn btn-light " href="/logout" role="button">Cerrar Sesión</a> {% else %}
+                  <a class="btn btn-dark btn-lg" href="/login" role="button">Iniciar Sesión</a>
+                  <a class="btn btn-dark btn-lg" href="/registro" role="button">Registrarme</a> {% endif %}
+                </p>
+         </div>
         {% endblock %}
+        {% include 'footer.html' %}
   </body>
 </html>
+
