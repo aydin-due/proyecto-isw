@@ -82,6 +82,30 @@ def cart():
     else:
         return render_template('cart.html', carrito=None, error="Inicia sesión primero.")
 
+@app.route('/pedidos',methods=['GET','POST'])
+def pedidos():
+    if 'username' in session:
+        user = session['username']
+        email = session['email']
+        if request.method == 'POST':
+            pedido = request.form['boton']
+            llaves = list(dict_usuarios[email]['pedidos'].keys())
+            lista_pedidos = [x for x in list(dict_usuarios[email]['pedidos'].keys()) if str(x) != str(pedido)]
+            pedidos_usuario={k:v for k,v in dict_usuarios[email]['pedidos'].items()}
+            dict_usuarios[email]['pedidos']= {k:v for k,v in pedidos_usuario.items() if k in lista_pedidos}
+            #print(dict_usuarios, pedido, lista_pedidos, llaves, pedidos_usuario)
+            with open('static/data/usuarios.json', 'w') as fp:
+                json.dump(dict_usuarios, fp)
+            pedidos=consultarPedidos(email)
+            return render_template('pedidos.html', username=user, pedidos=pedidos, error='Pedido cancelado exitosamente.')
+        else:
+            pedidos = consultarPedidos(email)
+            if (len(pedidos.keys())>0):
+                return render_template('pedidos.html', username=user, pedidos=pedidos)
+            return render_template('pedidos.html', username=user, pedidos=pedidos, error='No has realizado ningún pedido.')
+    else:
+        return render_template('pedidos.html', error="Inicia sesión primero.")
+
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -130,6 +154,22 @@ def consultarCarrito(email):
             carrito['total']+=dict_productos[k]['precio']*carrito['productos'][k]['cantidad']
     pedido=(len(carrito['productos'].keys()) > 0)
     return carrito, pedido
+
+def consultarPedidos(email):
+    with open('static/data/usuarios.json') as f:
+        dict_usuarios = json.load(f)
+    pedidos={}
+    for k in dict_usuarios[email]['pedidos'].keys():
+        pedidos[k]={'productos':{}, 'total':0}
+        for k2,v2 in dict_productos.items():
+            if k2 in dict_usuarios[email]['pedidos'][k]['productos']:
+                pedidos[k]['productos'][k2]=v2
+                cantidad = dict_usuarios[email]['pedidos'][k]['productos'].count(k2)
+                pedidos[k]['productos'][k2]['cantidad']= cantidad
+                pedidos[k]['total']+= dict_productos[k2]['precio']*cantidad
+                pedidos[k]['fecha']=dict_usuarios[email]['pedidos'][k]['fecha']
+    return pedidos
+
 
 if __name__ == '__main__':
     app.run(debug=True)

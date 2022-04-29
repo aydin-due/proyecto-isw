@@ -40,9 +40,11 @@
                                 <div class="modal-body">
                                     {% if username %}
                                     <label class="form-label">Bienvenido, {{ username }}</label><br>
-                                    <a class="btn btn-light " href="/logout" role="button">Cerrar Sesión</a> {% else %}
+                                    <a class="btn btn-light " href="/logout" role="button">Cerrar Sesión</a> 
+                                    {% else %}
                                     <a class="btn btn-light " href="/registro" role="button">Crear una Cuenta</a>
-                                    <a class="btn btn-light " href="/login" role="button">Iniciar Sesión</a> {% endif %}
+                                    <a class="btn btn-light " href="/login" role="button">Iniciar Sesión</a> 
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -52,6 +54,9 @@
             <!-- CARRITO -->
             <form action="/cart" method="GET">
                 <input type="image" src="static/images/carrito.png" class="rounded float-start" alt="IMAGE">
+            </form>
+            <form action="/pedidos" method="GET">
+                <input type="image" src="static/images/pedidos.png" style="height: 50px;" class="rounded float-start" alt="IMAGE">
             </form>
         </div>
     </nav>
