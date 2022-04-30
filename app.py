@@ -174,6 +174,5 @@ def consultarPedidos(email):
                 pedidos[k]['fecha']=dict_usuarios[email]['pedidos'][k]['fecha']
     return pedidos
 
-
 if __name__ == '__main__':
     app.run(debug=True)
