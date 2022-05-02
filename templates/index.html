@@ -20,18 +20,37 @@
         {% block content %}
         <br></br>
         <div class="jumbotron text-center col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center">
-          <h1 class="display-4">Busqueda</h1>
+          <h1 class="display-4">Búsqueda</h1>
           <hr class="my-4">
           {% if username %}
           <p class="lead">
             <label class="form-label">Bienvenido, {{ username }} </label><br>
             {% endif %}
-            <p class="lead">¿Desea Realizar una Busqueda de un Producto en Especial?</p>
+            <p class="lead">¿Desea realizar la búsqueda de un producto en especial?</p>
           <div class="text-center col-lg-6 offset-3 float-md-center" id="barramenu">
-              <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                  <button class="btn btn-dark" type="submit">Buscar</button>
+              <form action="" method="post" class="d-flex">
+                  <input class="form-control me-2" type="text" placeholder="Producto a buscar" name="producto" value="{{ request.form.producto }}">
+                  <input class="btn btn-dark" type="submit" name="boton" value="Buscar">
               </form>
+              {% if error %}
+                <p class="error"> {{ error }}</p>
+              {% endif %}
+              <div class="shop-items">
+              {% if productos %}
+                {%for k,v in productos.items() %}
+                  <div class="shop-item">
+                    <span class="shop-item-title">{{  v['title'] }}</span>
+                    <img class="shop-item-image" src="{{  v['thumbnail'] }}">
+                    <div class="shop-item-details">
+                      <span class="shop-item-price">${{  v['precio'] }}</span>
+                        {% if username %}
+                          <button class="btn btn-dark shop-item-button" type="submit" value="{{ k }}" name="boton">Agregar al Carrito</button>
+                        {% endif %}
+                    </div>
+                  </div>
+                {%endfor %}
+              {% endif %}
+              </div>
           </div>
           </p>
    </div>

@@ -16,9 +16,20 @@ with open('static/data/usuarios.json') as f:
 with open('static/data/productos.json') as f:
     dict_productos = json.load(f)
 
-@app.route("/")
+@app.route("/", methods=['GET','POST'])
 def index():
-    return render_template('index.html')
+    if request.method == 'POST':
+        error = ''
+        producto = request.form['producto']
+        resultados = {k:v for k,v in dict_productos.items() if (producto.lower() in v['title'].lower())}
+        if (len(resultados.keys())<0):
+            error = 'No se encontraron productos'
+        if 'username' in session:
+            user = session['username']
+            return render_template('index.html',username=user,productos=resultados, error = error)
+        return render_template('index.html', productos=resultados, error = error)
+    else:
+        return render_template('index.html', productos=None)
 
 @app.route("/cuenta", methods=['GET','POST'])
 def cuenta():
