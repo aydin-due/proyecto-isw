@@ -1,44 +1,122 @@
-.shop-item {
-    margin: 30px;
-}
-
 .shop-item-title {
     display: block;
     width: 100%;
     text-align: center;
     font-weight: bold;
-    font-size: 1.5em;
-    color: rgb(235, 152, 8);
+    font-size: 1.7em;
+    color: #FA936D;
     margin-bottom: 15px;
 }
 
 .shop-item-image {
-    height: 250px;
-}
-
-.shop-item-details {
-    display: flex;
-    align-items: center;
-    padding: 5px;
+    height: 225px;
 }
 
 .shop-item-price {
-    flex-grow: 20;
-    color: rgb(0, 0, 0);
+    color: #0d172a;
+    font-size: 20px;
 }
 
-.shop-items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.shop-item-button {
-    color: rgb(0, 0, 0);
-    background-color: rgb(235, 152, 8);
+.container {
+    gap: 10px;
+    padding: 16px;
 }
 
 #floatingSelect {
     margin: auto;
     text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    width: 25%;
+    margin: 30px;
+    width: 325px;
+    height: 450px;
+    float: left;
+    text-align: center;
+    border-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: .4s;
+}
+
+.content:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    transform: translate(0px, -8px);
+    transition: .6s;
+}
+
+.shop-item-button {
+    background-color: #fff;
+    border: 0 solid #e2e8f0;
+    border-radius: 1.5rem;
+    box-sizing: border-box;
+    color: #0d172a;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1;
+    padding: 1rem 1.6rem;
+    text-align: center;
+    text-decoration: none #0d172a solid;
+    text-decoration-thickness: auto;
+    transition: all .1s cubic-bezier(.2, 0, .2, 1);
+    box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.shop-item-button:hover {
+    background-color: #FA936D;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .shop-item-button {
+        font-size: 1.125rem;
+        padding: 1rem 1rem;
+    }
+}
+
+.btn-search {
+    background-color: #FA936D;
+    border-radius: 12px;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 15px;
+    text-align: center;
+    transition: 200ms;
+    width: 10%;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.btn-search:not(:disabled):hover,
+.btn-search:not(:disabled):focus {
+    outline: 0;
+    background: #FA936D;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .2), 0 3px 8px 0 rgba(0, 0, 0, .15);
+}
+
+.btn-search:disabled {
+    filter: saturate(0.2) opacity(0.5);
+    -webkit-filter: saturate(0.2) opacity(0.5);
+    cursor: not-allowed;
 }

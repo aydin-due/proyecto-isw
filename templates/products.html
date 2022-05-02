@@ -17,40 +17,38 @@
 
     {% block content %}
     <br></br>
-        <!-- PLATILLOS -->
-        <div class="">
-            <div class="text-md-center">
-                <section class="container content-section">
-                    <h1 <br class="display-4">Todos Nuestros Productos </br></h1>
-                    <hr class="my-4">
-                    <form action="" method="post">
-                        <select name="category" class="form-select" style="max-width:20%;" id="floatingSelect">
-                            {% for category in categories %}
-                            <option value= "{{category}}">{{category}}</option>
-                            {% endfor %}
-                            <input class="btn btn-dark" type="submit" name="boton" value="Buscar">
-                        </select>
-                        {% if error %}
-                            <p class="error"> {{ error }}</p>
-                        {% endif %}
-                        <div class="shop-items">
-                            {%for k,v in productos.items() %}
-                            <div class="shop-item">
-                                <span class="shop-item-title">{{  v['title'] }}</span>
-                                <img class="shop-item-image" src="{{  v['thumbnail'] }}">
-                                <div class="shop-item-details">
-                                    <span class="shop-item-price">${{  v['precio'] }}</span>
-                                        {% if username %}
-                                        <button class="btn btn-dark shop-item-button" type="submit" value="{{ k }}" name="boton">Agregar al Carrito</button>
-                                        {% endif %}
-                                </div>
-                            </div>
-                            {%endfor %}
+    <div class="jumbotron text-center col-lg-10 col-md-10 col-sm-10 col-xs-10 offset-1 float-md-center">
+        <h1 class="display-4">Todos Nuestros Productos</h1>
+        <hr class="my-4">
+        <form action="" method="post">
+            <select name="category" class="form-select" style="max-width:25%;" id="floatingSelect">
+                <option value selected>Selecciona una Categoría...</option>
+                {% for category in categories %}
+                <option value= "{{category}}">{{category}}</option>
+                {% endfor %}
+                <input class="btn-search" type="submit" name="boton" value="Buscar">
+                {% if error %}
+                <p class="error"> {{ error }}</p>
+                {% endif %}
+            </select>
+            <div class="gallery">
+                {%for k,v in productos.items() %}
+                <div class="content" style="background-color:#FFFFFF;">
+                    <span class="shop-item-title">{{  v['title'] }}</span>
+                    <img class="shop-item-image" src="{{  v['thumbnail'] }}">
+                    <div class="shop-item-details">
+                        <div class="container">
+                            <span class="shop-item-price">${{  v['precio'] }}</span>
                         </div>
-                    </form>
-                </section>
+                        {% if username %}
+                        <button class="shop-item-button" type="submit" value="{{ k }}" name="boton">Agregar al Carrito</button>
+                        {% endif %}
+                    </div>
+                </div>
+                {%endfor %}
             </div>
-        </div>
+        </form>
+    </div>
     {% endblock %}
 
     </body>

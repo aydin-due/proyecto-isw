@@ -20,15 +20,26 @@
     {% include 'navbar.html' %}
         {% block content %}
         <br></br>
+        <br></br>
         <div class="jumbotron text-center col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center">
                 <h1 class="display-4">Cuenta</h1>
                 <hr class="my-4">
                 {% if username %}
                 <p class="lead">
                   <label class="form-label">Bienvenido, {{ username }} </label><br>
-                  <a class="btn btn-dark " href="/logout" role="button">Cerrar Sesión</a> {% else %}
-                  <a class="btn btn-dark btn-lg" href="/login" role="button">Iniciar Sesión</a>
-                  <a class="btn btn-dark btn-lg" href="/registro" role="button">Registrarme</a> {% endif %}
+                  <form action="/logout">
+                    <input class="btn-logout" type="submit" value="Cerrar Sesión" />
+                  </form>
+                  {% else %}
+                  <div class="grid-container">
+                    <form action="/login">
+                      <input class="btn-login" type="submit" value="Iniciar Sesión" />
+                    </form>
+                    <form action="/registro">
+                      <input class="btn-register" type="submit" value="Registrarme" />
+                    </form>
+                    {% endif %}
+                  </div>
                 </p>
          </div>
         {% endblock %}
