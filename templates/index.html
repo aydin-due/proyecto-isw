@@ -26,31 +26,32 @@
           <p class="lead">
             <label class="form-label">Bienvenido, {{ username }} </label><br>
             {% endif %}
-            <p class="lead">¿Desea realizar la búsqueda de un producto en especial?</p>
+          <p class="lead">¿Desea realizar la búsqueda de un producto en especial?</p>
           <div class="text-center col-lg-6 offset-3 float-md-center" id="barramenu">
               <form action="" method="post" class="d-flex">
                   <input class="form-control me-2" type="text" placeholder="Producto a buscar" name="producto" value="{{ request.form.producto }}">
                   <input class="btn btn-dark" type="submit" name="boton" value="Buscar">
-              </form>
-              {% if error %}
-                <p class="error"> {{ error }}</p>
-              {% endif %}
-              <div class="shop-items">
-              {% if productos %}
-                {%for k,v in productos.items() %}
-                  <div class="shop-item">
-                    <span class="shop-item-title">{{  v['title'] }}</span>
-                    <img class="shop-item-image" src="{{  v['thumbnail'] }}">
-                    <div class="shop-item-details">
-                      <span class="shop-item-price">${{  v['precio'] }}</span>
-                        {% if username %}
-                          <button class="btn btn-dark shop-item-button" type="submit" value="{{ k }}" name="boton">Agregar al Carrito</button>
-                        {% endif %}
-                    </div>
+                  {% if error %}
+                    <p class="error"> {{ error }}</p>
+                  {% endif %}
+                  <div class="shop-items">
+                  {% if productos %}
+                    {%for k,v in productos.items() %}
+                      <div class="shop-item">
+                        <span class="shop-item-title">{{  v['title'] }}</span>
+                        <img class="shop-item-image" style="height: 90px;" src="{{  v['thumbnail'] }}">
+                        <div class="shop-item-details">
+                          <span class="shop-item-price">${{  v['precio'] }}</span>
+                            {% if username %}
+                              <button class="btn btn-dark shop-item-button" type="submit" value="{{ k }}" name="boton">Agregar al Carrito</button>
+                            {% endif %}
+                        </div>
+                      </div>
+                    {%endfor %}
+                  {% endif %}
                   </div>
-                {%endfor %}
-              {% endif %}
-              </div>
+                </form>
+              
           </div>
           </p>
    </div>

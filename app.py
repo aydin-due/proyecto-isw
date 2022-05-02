@@ -20,14 +20,21 @@ with open('static/data/productos.json') as f:
 def index():
     if request.method == 'POST':
         error = ''
-        producto = request.form['producto']
-        resultados = {k:v for k,v in dict_productos.items() if (producto.lower() in v['title'].lower())}
-        if (len(resultados.keys())<0):
-            error = 'No se encontraron productos'
-        if 'username' in session:
-            user = session['username']
-            return render_template('index.html',username=user,productos=resultados, error = error)
-        return render_template('index.html', productos=resultados, error = error)
+        if (request.form['boton']=='Buscar'):
+            producto = request.form['producto']
+            resultados = {k:v for k,v in dict_productos.items() if (producto.lower() in v['title'].lower())}
+            if (len(resultados.keys())==0):
+                error = 'No se encontraron productos'
+            if 'username' in session:
+                user = session['username']
+                return render_template('index.html',username=user,productos=resultados, error = error)
+            return render_template('index.html', productos=resultados, error = error)
+        else:
+            email = session['email']
+            producto = request.form['boton']
+            print(email, producto)
+            agregarAlCarrito(email, producto)
+            return render_template('index.html', productos=None, error = 'Producto añadido exitosamente.')
     else:
         return render_template('index.html', productos=None)
 
@@ -52,9 +59,7 @@ def productos():
             return render_template('products.html', productos=resultado, categories=categorias)
         else:
             producto = request.form['boton']
-            dict_usuarios[email]['carrito'].append(producto)
-            with open('static/data/usuarios.json', 'w') as fp:
-                json.dump(dict_usuarios, fp)
+            agregarAlCarrito(email, producto)
             return render_template('products.html',username=user,productos=dict_productos, categories=categorias, error="Producto añadido al carrito.")
     else:
         if 'username' in session:
@@ -184,6 +189,11 @@ def consultarPedidos(email):
                 pedidos[k]['total']+= dict_productos[k2]['precio']*cantidad
                 pedidos[k]['fecha']=dict_usuarios[email]['pedidos'][k]['fecha']
     return pedidos
+
+def agregarAlCarrito(email, producto):
+    dict_usuarios[email]['carrito'].append(producto)
+    with open('static/data/usuarios.json', 'w') as fp:
+        json.dump(dict_usuarios, fp)
 
 if __name__ == '__main__':
     app.run(debug=True)
