@@ -16,43 +16,40 @@
         <link rel="shortcut icon" href="#" />
     </head>
 
-<body>
+  <body>
     {% include 'navbar.html' %}
-    {% block content %}
-    <br></br>
-    <div class="">
-            <div class="text-md-center">
-                <section class="container content-section">
-                    <h1 class="display-4">Carrito de Compras</h1>
-                    <hr class="my-4">
-                    <form action="" method="post">
-                        {% if error %}
-                            <p class="error"> {{ error }}</p>
-                        {% endif %}
-                        {% if username %}
-                            <div class="shop-items">
-                                {%for k,v in carrito['productos'].items() %}
-                                <div class="shop-item">
-                                    <span class="shop-item-title">{{  v['title'] }}</span>
-                                    <img class="shop-item-image" src="{{  v['thumbnail'] }}">
-                                    <div class="shop-item-details">
-                                        <span class="shop-item-price">${{  v['precio'] }}</span>
-                                        <span class="shop-item-price"><strong>Cantidad:</strong> {{  v['cantidad'] }}</span>
-                                    </div>
-                                    <button class="btn btn-dark shop-item-button" type="submit" value="{{ k }}" name="boton">Eliminar del Carrito</button>
-                                </div>
-                                {%endfor %}
-                            </div>
-                            {% if pedido %}
-                            <span class="shop-item-price"><strong>Cantidad a pagar: </strong>${{  carrito['total'] }}</span>
-                            <button class="btn btn-warning shop-item-button" type="submit" value="pedido" name="boton">Realizar pedido</button>
+        {% block content %}
+        <br></br>
+        <div class="">
+                <div class="text-md-center">
+                    <section class="container content-section">
+                        <form action="" method="post">
+                            {% if error %}
+                                <p class="error"> {{ error }}</p>
                             {% endif %}
-                        {% endif %}
-                    </form>
-                </section>
+                            {% if username %}
+                                <div class="shop-items">
+                                    {%for k,v in carrito['productos'].items() %}
+                                    <div class="shop-item">
+                                        <span class="shop-item-title">{{  v['title'] }}</span>
+                                        <img class="shop-item-image" src="{{  v['thumbnail'] }}">
+                                        <div class="shop-item-details">
+                                            <span class="shop-item-price">${{  v['precio'] }}</span>
+                                            <span class="shop-item-price"><strong>Cantidad:</strong> {{  v['cantidad'] }}</span>
+                                        </div>
+                                        <button class="btn btn-dark shop-item-button" type="submit" value="{{ k }}" name="boton">Eliminar del Carrito</button>
+                                    </div>
+                                    {%endfor %}
+                                </div>
+                                {% if pedido %}
+                                <span class="shop-item-price"><strong>Cantidad a pagar: </strong>${{  carrito['total'] }}</span>
+                                <button class="btn btn-warning shop-item-button" type="submit" value="pedido" name="boton">Realizar pedido</button>
+                                {% endif %}
+                            {% endif %}
+                        </form>
+                    </section>
+                </div>
             </div>
-        </div>
-    {% endblock %}
-</body>
-
-</HTML>
+        {% endblock %}
+  </body>
+</html>
