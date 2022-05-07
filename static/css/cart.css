@@ -19,7 +19,7 @@
 .shop-item-details {
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: 0px;
 }
 
 .shop-item-price {
@@ -35,4 +35,5 @@
 
 .shop-item-button {
     color: rgb(0, 0, 0);
+    background-color: rgb(235, 152, 8);
 }
