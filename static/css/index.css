@@ -2,3 +2,79 @@
     color: #000000;
     font-size: 20px;
 }
+
+.shop-item-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.7em;
+    color: #FA936D;
+    margin-bottom: 15px;
+}
+
+.shop-item-image {
+    height: 200px;
+}
+
+.shop-item-price {
+    color: #0d172a;
+    font-size: 20px;
+}
+
+.content {
+    width: 25%;
+    margin: 30px;
+    width: 325px;
+    height: 400px;
+    float: left;
+    text-align: center;
+    border-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: .4s;
+}
+
+.content:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    transform: translate(0px, -8px);
+    transition: .6s;
+}
+
+.shop-item-button {
+    background-color: #fff;
+    border: 0 solid #e2e8f0;
+    border-radius: 1.5rem;
+    box-sizing: border-box;
+    color: #0d172a;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1;
+    padding: 1rem 1.6rem;
+    text-align: center;
+    text-decoration: none #0d172a solid;
+    text-decoration-thickness: auto;
+    transition: all .1s cubic-bezier(.2, 0, .2, 1);
+    box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.shop-item-button:hover {
+    background-color: #FA936D;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .shop-item-button {
+        font-size: 1.125rem;
+        padding: 1rem 1rem;
+    }
+}
